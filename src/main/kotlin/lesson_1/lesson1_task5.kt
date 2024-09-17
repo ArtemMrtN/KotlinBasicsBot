@@ -1,23 +1,21 @@
 package org.example.lesson_1
 
+import kotlin.math.min
+import kotlin.time.Duration
+import kotlin.time.Duration.Companion.hours
+import kotlin.time.Duration.Companion.minutes
+import kotlin.time.Duration.Companion.seconds
+
 fun main() {
 
-//    Я не нашел сколько именно секунд провел Гагарин в космосе, нашел, что 108 минут.
-//    Но секунд получается 0, я взял время из задачи: 01:30:09. Или нужно, чтобы было 00 секунд?
+    val numberOfSeconds: Duration = 6480.seconds
 
-    val numberOfSeconds: Int = 5409
+    val hours = numberOfSeconds.inWholeHours
+    val hoursDuration: Duration = hours.hours
+    val minutes = numberOfSeconds.inWholeMinutes - hoursDuration.inWholeMinutes
+    val minutesDuration: Duration = minutes.minutes
+    val seconds = numberOfSeconds.inWholeSeconds - minutesDuration.inWholeSeconds - hoursDuration.inWholeSeconds
 
-    val hours = numberOfSeconds / 3600
-    val minutes = (numberOfSeconds / 60) - (hours * 60)
-    val seconds = numberOfSeconds - hours * 3600 - minutes * 60
-
-    print(String.format("%02d", hours))
-    print(":")
-    print(minutes)
-    print(":")
-    print(String.format("%02d", seconds))
-
-//    Нашел такое решение String.format("%02d", seconds), но в уроке такого не было, не уверен,
-//    что в задаче от меня требуется именно это
+    println("%02d:%02d:%02d".format(hours, minutes, seconds))
 
 }
