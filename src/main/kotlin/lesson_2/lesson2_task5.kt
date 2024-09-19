@@ -1,7 +1,9 @@
 package org.example.lesson_2
 
-import java.util.*
 import kotlin.math.pow
+
+const val PERCENT = 100
+const val ONE = 1
 
 fun main() {
 
@@ -9,8 +11,7 @@ fun main() {
     val interestRate: Double = 16.7
     val numberOfYears = 20
 
-    val depositTemp = (1 + interestRate / 100)
-    val deposit = amountOfInvestments * depositTemp.pow(numberOfYears)
+    val deposit = amountOfInvestments * (ONE + interestRate / PERCENT).pow(numberOfYears)
 
     println("%.3f".format(deposit))
 
