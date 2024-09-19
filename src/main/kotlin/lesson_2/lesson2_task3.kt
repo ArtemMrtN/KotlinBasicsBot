@@ -18,6 +18,6 @@ fun main() {
     val arrivalHour = departureHour + travelHour + extraHour
     val arrivalMinute = allMinute - extraHour.hours.inWholeMinutes
 
-    println("Время прибытия поезда: ${String.format("%02d", arrivalHour)}:${String.format("%02d", arrivalMinute)}.")
+    println("Время прибытия поезда: ${String.format("%02d:%02d", arrivalHour, arrivalMinute)}.")
 
 }
