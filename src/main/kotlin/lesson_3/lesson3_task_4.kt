@@ -1,7 +1,6 @@
 package org.example.lesson_3
 
 fun main() {
-
     var directionFrom = "E2"
     var directionTo = "E4"
     var strokeNumber = "1"
@@ -15,5 +14,4 @@ fun main() {
 
     motion = "$directionFrom-$directionTo; $strokeNumber"
     println(motion)
-
 }
