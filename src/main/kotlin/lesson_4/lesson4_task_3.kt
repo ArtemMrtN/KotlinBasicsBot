@@ -3,10 +3,15 @@ package org.example.lesson_4
 fun main() {
 
     val weatherToday: Boolean = true
-    val awning: Boolean = true
-    val airHumidity: Int = 20
-    val season: String = "зима"
+    val awningToday: Boolean = true
+    val airHumidityToday: Int = 20
+    val seasonToday: String = "зима"
 
-    println("Благоприятные ли условия сейчас для роста бобовых? ${weatherToday == true && awning == true && airHumidity == 20 && season != "зима"}")
+    println("Благоприятные ли условия сейчас для роста бобовых? ${weatherToday == SUNNY_WEATHER && awningToday == OUTDOOR_AWNING && airHumidityToday == AIR_HUMIDITY && seasonToday != NOT_SEASON}")
 
 }
+
+const val SUNNY_WEATHER = true
+const val OUTDOOR_AWNING = true
+const val AIR_HUMIDITY = 20
+const val NOT_SEASON = "зима"
