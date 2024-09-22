@@ -11,6 +11,22 @@ fun main() {
     println("Погода благоприятная? (true или false):")
     val weatherConditions: Boolean = readLine().toBoolean()
 
-    println("Научно-исследовательский корабль может приступить к долгосрочному плаванию: ${(noDamage == true && crew in 55..70 && boxesOfProvisions != null && boxesOfProvisions > 50 )||(noDamage == false && crew != null && crew >= 70 && boxesOfProvisions != null && boxesOfProvisions > 50 && weatherConditions == true)}")
+    println(
+        "Научно-исследовательский корабль может приступить к долгосрочному плаванию: ${
+            (noDamage == SHIP_HAS_NO_DAMAGE &&
+                    crew in MIN_NUMBER_OF_CREW..OPTIMAL_NUMBER_OF_CREW && boxesOfProvisions != null &&
+                    boxesOfProvisions > MIN_BOXES_OF_PROVISION) ||
+                    (noDamage == SHIP_HAS_DAMAGE && crew != null && crew >= OPTIMAL_NUMBER_OF_CREW &&
+                            boxesOfProvisions != null &&
+                            boxesOfProvisions > MIN_BOXES_OF_PROVISION && weatherConditions == FAVORABLE_WEATHER)
+        }"
+    )
 
 }
+
+const val MIN_NUMBER_OF_CREW = 55
+const val OPTIMAL_NUMBER_OF_CREW = 70
+const val MIN_BOXES_OF_PROVISION = 50
+const val FAVORABLE_WEATHER = true
+const val SHIP_HAS_NO_DAMAGE = true
+const val SHIP_HAS_DAMAGE = false
