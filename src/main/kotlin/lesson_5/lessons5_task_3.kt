@@ -8,11 +8,14 @@ fun main() {
     println("Введите второе число от 0 до 42:")
     val secondNumber = readln().toInt()
 
+    val mainPrize = "Поздравляем! Вы выиграли главный приз!"
+    val consolationPrize = "Вы выиграли утешительный приз!"
+
     when {
-        firstNumber == WINNING_FIRST_NUMBER && secondNumber == WINNING_SECOND_NUMBER -> println("Поздравляем! Вы выиграли главный приз!")
-        secondNumber == WINNING_FIRST_NUMBER && firstNumber == WINNING_SECOND_NUMBER -> println("Поздравляем! Вы выиграли главный приз!")
-        firstNumber == WINNING_FIRST_NUMBER || secondNumber == WINNING_SECOND_NUMBER -> println("Вы выиграли утешительный приз!")
-        secondNumber == WINNING_FIRST_NUMBER || firstNumber == WINNING_SECOND_NUMBER -> println("Вы выиграли утешительный приз!")
+        firstNumber == WINNING_FIRST_NUMBER && secondNumber == WINNING_SECOND_NUMBER -> println(mainPrize)
+        secondNumber == WINNING_FIRST_NUMBER && firstNumber == WINNING_SECOND_NUMBER -> println(mainPrize)
+        firstNumber == WINNING_FIRST_NUMBER || secondNumber == WINNING_SECOND_NUMBER -> println(consolationPrize)
+        secondNumber == WINNING_FIRST_NUMBER || firstNumber == WINNING_SECOND_NUMBER -> println(consolationPrize)
         else -> println("Неудача!")
     }
 
