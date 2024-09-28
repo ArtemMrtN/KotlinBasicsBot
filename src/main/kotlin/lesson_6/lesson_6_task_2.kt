@@ -2,13 +2,10 @@ package org.example.lesson_6
 
 fun main() {
 
-    var numberOfSeconds = readln().toInt()
-    val allSeconds = numberOfSeconds
+    val numberOfSeconds: Long = readln().toLong()
+    val milliseconds: Long = numberOfSeconds * 1000
 
-    while (numberOfSeconds > 0) {
-        numberOfSeconds--
-        Thread.sleep(1000)
-    }
-    println("Прошло $allSeconds секунд")
+    Thread.sleep(milliseconds)
+    println("Прошло $numberOfSeconds секунд")
 
 }
