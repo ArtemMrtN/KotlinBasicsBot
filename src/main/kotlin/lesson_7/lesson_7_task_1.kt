@@ -2,15 +2,17 @@ package org.example.lesson_7
 
 fun main() {
 
-    val a = ('a' ..'z').random().toString()
-    val b = ('0' ..'9').random().toString()
-    val c = ('a' ..'z').random().toString()
-    val d = ('0' ..'9').random().toString()
-    val e = ('a' ..'z').random().toString()
-    val f = ('0' ..'9').random().toString()
+    val password = mutableListOf<String>()
 
-    val password = a + b + c + d + e + f
-
-    println("Сгенерированный пароль: $password")
+    for (i in 1..6) {
+        if (i % 2 == 0) {
+            val passwordEven = ('0'..'9').random().toString()
+            password.add(passwordEven)
+        } else {
+            val passwordOdd = ('a'..'z').random().toString()
+            password.add(passwordOdd)
+        }
+    }
+    println("Сгенерированный пароль: ${password.joinToString(separator = "")}")
 
 }
