@@ -42,10 +42,3 @@ fun main() {
     } while (counter > 0)
 
 }
-
-
-
-
-
-
-
