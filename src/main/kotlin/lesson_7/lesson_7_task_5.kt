@@ -11,27 +11,19 @@ fun main() {
         passwordLength = 6
     }
 
-    val digits = "0123456789"
-    val lowerCase = "abcdefghijklmnopqrstuvwxyz"
-    val upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    val specialChars = "!@#\$%^&*()_+{}|:<>?"
+    val digits = ('0'..'9').toList()
+    val lowerCase = ('a'..'z').toList()
+    val upperCase = ('A'..'Z').toList()
+    val specialChars = "!@#\$%^&*()_+{}|:<>?".toList()
+    val allChars = lowerCase + upperCase + digits + specialChars
 
     for (i in 1..passwordLength) {
-        if (i % 5 == 0) {
-            val passwordRandom = (digits).random().toString()
-            password.add(passwordRandom)
-        } else if (i % 4 == 0) {
-            val passwordRandom = (lowerCase).random().toString()
-            password.add(passwordRandom)
-        } else if (i % 3 == 0) {
-            val passwordRandom = (upperCase).random().toString()
-            password.add(passwordRandom)
-        } else if (i % 2 == 0) {
-            val passwordRandom = (specialChars).random().toString()
-            password.add(passwordRandom)
-        } else {
-            val passwordRandom = (specialChars).random().toString()
-            password.add(passwordRandom)
+        when (i) {
+            1 -> password.add(lowerCase.random().toString())
+            2 -> password.add(upperCase.random().toString())
+            3 -> password.add(digits.random().toString())
+            4 -> password.add(specialChars.random().toString())
+            else -> password.add(allChars.random().toString())
         }
     }
     println("Сгенерированный пароль: ${password.shuffled().joinToString(separator = "")}")
