@@ -8,15 +8,15 @@ fun main() {
     println("Напишите какой ингредиент вы хотите заменить?")
 
     val searchIngredient = readln()
+    val index = ingredients.indexOf(searchIngredient)
 
-    if (searchIngredient in ingredients) {
+    if (index == -1) {
+        println("Такого ингредиента в рецепте нет")
+    } else {
         println("$searchIngredient в рецепте есть!\nНапишите какой ингредиент вы хотите добавить:")
         val newIngredient = readln()
-        val index = ingredients.indexOf(searchIngredient)
         ingredients[index] = newIngredient
         println("Готово! Вы сохранили следующий список: ${ingredients.contentToString()}")
-    } else {
-        println("Такого ингредиента в рецепте нет")
     }
 
 }
