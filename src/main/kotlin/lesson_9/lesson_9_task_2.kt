@@ -12,10 +12,5 @@ fun main() {
         val userIngredients = readln()
         ingredients.add(userIngredients)
         println("Теперь в рецепте есть следующие ингредиенты: $ingredients")
-    } else {
-        return
     }
-
-
-
 }
