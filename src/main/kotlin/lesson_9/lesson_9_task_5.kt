@@ -6,17 +6,12 @@ fun main() {
 
     println("Напишите пять ингредиентов по отдельности/")
 
-    val ingredients: MutableList<String> = mutableListOf()
+    val ingredients: MutableSet<String> = mutableSetOf()
 
     do {
         println("Напишите ингредиент:")
         val ingredient = readln()
-        if (ingredients.contains(ingredient)) {
-            println("Такой ингредиент уже есть, он добавлен не будет.")
-            continue
-        } else {
-            ingredients.add(ingredient)
-        }
+        ingredients.add(ingredient)
     } while (ingredients.size < 5)
 
     val resultList = ingredients.sorted().joinToString()
