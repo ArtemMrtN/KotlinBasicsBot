@@ -12,8 +12,10 @@ fun main() {
 
     if (playerMove > pcMove) {
         println("Победило человечество!")
-    } else {
+    } else if (playerMove < pcMove) {
         println("Победила машина")
+    } else {
+        println("Ничья!")
     }
 
 }
