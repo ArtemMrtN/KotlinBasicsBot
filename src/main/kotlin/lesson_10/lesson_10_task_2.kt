@@ -8,14 +8,18 @@ fun main() {
     println("Введите пароль:")
     val userPassword = readln()
 
-    lengthValidation(userName, userPassword)
+    if (checkLength(userName, userPassword)) {
+        println("Логин или пароль недостаточно длинные")
+    } else {
+        println("Добро пожаловать!")
+    }
 
 }
 
-fun lengthValidation(userName: String, userPassword: String) {
+fun checkLength(userName: String, userPassword: String): Boolean {
 
-    if (userName.length < 4 || userPassword.length < 4) {
-        println("Логин или пароль недостаточно длинные")
-    }
+    val minLength = 4
+    val passwordLength = userName.length < minLength || userPassword.length < minLength
+    return passwordLength
 
 }
