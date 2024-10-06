@@ -16,10 +16,7 @@ fun main() {
 
 }
 
-fun checkLength(userName: String, userPassword: String): Boolean {
+fun checkLength(userName: String, userPassword: String): Boolean =
+    userName.length < MIN_LENGTH || userPassword.length < MIN_LENGTH
 
-    val minLength = 4
-    val passwordLength = userName.length < minLength || userPassword.length < minLength
-    return passwordLength
-
-}
+const val MIN_LENGTH = 4
