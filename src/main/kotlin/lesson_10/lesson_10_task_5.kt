@@ -15,9 +15,9 @@ fun main() {
 
     if (allowEntry(userLoginAuth, userPasswordAuth)) {
         token = generateToken()
-        showCart(token, cart.toString())
+        showCart(token, cart)
     } else {
-        println(null)
+        println("Ошибка авторизации. Неправильный логин или пароль!")
     }
 
 }
@@ -25,8 +25,8 @@ fun main() {
 fun allowEntry(userLoginAuth: String, userPasswordAuth: String) =
     userLoginAuth == USER_LOGIN && userPasswordAuth == USER_PASSWORD
 
-fun showCart(token: String, cart: String) {
-    println(cart)
+fun showCart(token: String, cart: List<String>): List<String> {
+    return cart
 }
 
 fun generateToken(): String = UUID.randomUUID().toString()
