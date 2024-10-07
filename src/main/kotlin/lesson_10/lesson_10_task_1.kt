@@ -3,11 +3,11 @@ package org.example.lesson_10
 fun main() {
 
     println("Ход игрока:")
-    val playerMove = rollDice()
+    val playerMove = rollDiceOld()
     println(playerMove)
 
     println("Ход компьютера:")
-    val pcMove = rollDice()
+    val pcMove = rollDiceOld()
     println(pcMove)
 
     if (playerMove > pcMove) {
@@ -20,4 +20,4 @@ fun main() {
 
 }
 
-fun rollDice() = (1..6).random()
+fun rollDiceOld() = (1..6).random()
