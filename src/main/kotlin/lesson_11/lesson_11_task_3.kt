@@ -4,7 +4,13 @@ class UserDesc(
     val avatar: String,
     val nickname: String,
     var status: String? = null,
-) {}
+) {
+    fun updateStatus(searchNickname: String, newStatus: String?) {
+        if (searchNickname == nickname) {
+            status = newStatus
+        }
+    }
+}
 
 class Room(
     val cover: String,
@@ -14,9 +20,6 @@ class Room(
     fun addUser(user: UserDesc) {
         users.add(user)
         println("В комнату добавлен пользователь ${user.nickname}")
-    }
-    fun updateStatus(user: UserDesc, status: String?) {
-        user.status = status
     }
 }
 
@@ -45,7 +48,7 @@ fun main() {
 
     room1.addUser(user1)
     room1.addUser(user2)
-    room1.updateStatus(user1, status = "разговаривает")
+    user1.updateStatus(user1.nickname, newStatus = "разговаривает")
 
     println(room1.users.map { it.status })
 
