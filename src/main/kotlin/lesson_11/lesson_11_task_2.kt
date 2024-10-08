@@ -13,10 +13,14 @@ class User2 (
         println(password)
         println(email)
         println(bio)
+    }
 
+    fun fillBio() {
         println("Заполните bio:")
         bio = readln()
+    }
 
+    fun changePassword () {
         println("Вам необходимо сменить пароль. \nВведите текущий пароль:")
         val enteredPassword = readln()
         if (enteredPassword == password) {
@@ -39,6 +43,8 @@ fun main() {
     )
 
     user.userInformation()
+    user.fillBio()
+    user.changePassword()
 
     println("Обновленная информация:")
     println(user.id)
