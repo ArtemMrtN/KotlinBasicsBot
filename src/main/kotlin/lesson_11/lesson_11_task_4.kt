@@ -31,8 +31,17 @@ class Recipe(
 }
 
 class RecipeCategory(
-    val recipeItem: Recipe,
-) {}
+    val recipeItem: MutableList<Recipe> = mutableListOf(),
+) {
+    fun addRecipe(recipe: Recipe) {
+        recipeItem.add(recipe)
+    }
+    fun showRecipeCategory() {
+        for (i in 0 until recipeItem.size) {
+            println("Фото: ${recipeItem.map { it.photo }[i]}, Заголовок: ${recipeItem.map { it.title }[i]}")
+        }
+    }
+}
 
 fun main() {
 
@@ -52,6 +61,17 @@ fun main() {
                 "5. Подавайте бургеры горячими с картофельными чипсами или картофельным пюре.",
         numberOfDishes = 1,
     )
+    val chicken = Recipe(
+        "image url",
+        "Курица",
+        cookingMethod = "Рецепт",
+        numberOfDishes = 1,
+    )
+
+    val burgers = RecipeCategory()
+    burgers.addRecipe(burgerWithMushrooms)
+    burgers.addRecipe(chicken)
+    burgers.showRecipeCategory()
 
     burgerWithMushrooms.addIngredient(curd, 1)
     burgerWithMushrooms.addIngredient(chickenEgg, 2)
