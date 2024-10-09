@@ -15,9 +15,8 @@ class User2 (
         println(bio)
     }
 
-    fun fillBio() {
-        println("Заполните bio:")
-        bio = readln()
+    fun fillBio(newBio: String) {
+        bio = newBio
     }
 
     fun changePassword () {
@@ -42,8 +41,11 @@ fun main() {
         email = "mail@gmail.com",
     )
 
+    println("Заполните bio:")
+    val newBio = readln()
+
     user.userInformation()
-    user.fillBio()
+    user.fillBio(newBio)
     user.changePassword()
 
     println("Обновленная информация:")
