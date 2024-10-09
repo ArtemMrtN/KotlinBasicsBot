@@ -3,15 +3,14 @@ package org.example.lesson_11
 class MemberOfTheForum(
     var userId: Int,
     var userName: String,
-) {
-}
+) {}
 
 class ForumMessage(
     val authorId: Int,
     val message: String,
 ) {}
 
-object Forum {
+class Forum {
 
     var countId: Int = 1
     var allUsers: MutableList<MemberOfTheForum> = mutableListOf()
@@ -43,12 +42,14 @@ object Forum {
 
 fun main() {
 
-    val user1 = Forum.createNewUser("Artem")
-    val user2 = Forum.createNewUser("Andrey")
+    val forum = Forum()
 
-    val mess1 = Forum.createNewMessage(user2.userId,"Всем привет!")
-    val mess2 = Forum.createNewMessage(user1.userId,"Мне нравится")
+    val user1 = forum.createNewUser("Artem")
+    val user2 = forum.createNewUser("Andrey")
 
-    Forum.printThread()
+    val mess1 = forum.createNewMessage(user1.userId, "Задачи становятся сложнее и интереснее")
+    val mess2 = forum.createNewMessage(user2.userId, "Прорвемся!")
+
+    forum.printThread()
 
 }
