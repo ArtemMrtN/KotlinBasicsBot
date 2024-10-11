@@ -7,7 +7,15 @@ class Weather() {
     var precipitation = false
 
     fun checkWeather() {
-        println("Погода днем: $daytimeTemperature, погода ночью: $nightTemperature. Осадки: $precipitation")
+        val precipitationText: String
+
+        if (precipitation == false) {
+            precipitationText = "Нет"
+        } else {
+            precipitationText = "Да"
+        }
+
+        println("Погода днем: $daytimeTemperature, погода ночью: $nightTemperature. Осадки: $precipitationText")
     }
 
 }
