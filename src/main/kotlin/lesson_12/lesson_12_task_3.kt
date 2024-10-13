@@ -1,8 +1,13 @@
 package org.example.lesson_12
 
-class WeatherInKelvin(daytimeTemperature: Int, nightTemperature: Int, precipitation: Boolean) {
+class WeatherInKelvin(_daytimeTemperature: Int, _nightTemperature: Int, _precipitation: Boolean) {
+
+    var daytimeTemperature = _daytimeTemperature
+    var nightTemperature = _nightTemperature
+    var precipitation = _precipitation
 
     init {
+
         val precipitationText: String
 
         if (precipitation == false) {
@@ -11,6 +16,9 @@ class WeatherInKelvin(daytimeTemperature: Int, nightTemperature: Int, precipitat
             precipitationText = "Да"
         }
 
+        daytimeTemperature = (daytimeTemperature - 273.15).toInt()
+        nightTemperature = (nightTemperature - 273.15).toInt()
+
         println("Погода днем: $daytimeTemperature, погода ночью: $nightTemperature. Осадки: $precipitationText")
     }
 
@@ -18,8 +26,8 @@ class WeatherInKelvin(daytimeTemperature: Int, nightTemperature: Int, precipitat
 
 fun main() {
 
-    val weatherMonday = WeatherInKelvin(23,11, false)
+    val weatherMonday = WeatherInKelvin(273,261, false)
 
-    val weatherTuesday = WeatherInKelvin(16,9,true)
+    val weatherTuesday = WeatherInKelvin(290,282,true)
 
 }
