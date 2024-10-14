@@ -16,8 +16,8 @@ class WeatherInKelvin(_daytimeTemperature: Int, _nightTemperature: Int, _precipi
             precipitationText = "Да"
         }
 
-        daytimeTemperature = (daytimeTemperature - 273.15).toInt()
-        nightTemperature = (nightTemperature - 273.15).toInt()
+        daytimeTemperature = (daytimeTemperature - TEMPERATURE_CONVERSION).toInt()
+        nightTemperature = (nightTemperature - TEMPERATURE_CONVERSION).toInt()
 
         println("Погода днем: $daytimeTemperature, погода ночью: $nightTemperature. Осадки: $precipitationText")
     }
@@ -31,3 +31,5 @@ fun main() {
     val weatherTuesday = WeatherInKelvin(290,282,true)
 
 }
+
+const val TEMPERATURE_CONVERSION = 273.15
