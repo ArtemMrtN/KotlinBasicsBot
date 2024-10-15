@@ -3,9 +3,8 @@ package org.example.lesson_13
 class Contact(
     val name: String,
     val phoneNumber: Long,
-) {
-    var company: String? = null
-}
+    val company: String? = null
+) {}
 
 fun main() {
 
