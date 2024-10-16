@@ -6,7 +6,7 @@ class ContactList(
     val name: String,
     val phoneNumber: Long,
     var company: String? = null
-) {}
+)
 
 fun main() {
 
