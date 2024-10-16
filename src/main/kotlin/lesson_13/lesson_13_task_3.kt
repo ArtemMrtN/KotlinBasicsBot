@@ -6,20 +6,16 @@ class ContactList(
     val name: String,
     val phoneNumber: Long,
     var company: String? = null
-) {
-    init {
-        contactListAll.add(this)
-    }
-}
+) {}
 
 fun main() {
 
-    val contact1 = ContactList("Artem", 89171112233)
-    val contact2 = ContactList("Alex", 89276665544)
-    val contact3 = ContactList("Ростислав", 89123456789, "null")
-    val contact4 = ContactList("Владимир", 89123456789, "Google")
-    val contact5 = ContactList("Александр", 89123456789, "Reddit")
+    contactListAll.add(ContactList("Artem", 89171112233))
+    contactListAll.add(ContactList("Alex", 89276665544))
+    contactListAll.add(ContactList("Ростислав", 89123456789, "null"))
+    contactListAll.add(ContactList("Владимир", 89123456789, "Google"))
+    contactListAll.add(ContactList("Александр", 89123456789, "Reddit"))
 
-    contactListAll.mapNotNull { it.company }.forEach{println(it)}
+    contactListAll.mapNotNull { it.company }.forEach { println(it) }
 
 }
