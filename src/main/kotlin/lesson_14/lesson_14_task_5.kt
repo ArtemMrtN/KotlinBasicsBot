@@ -75,12 +75,12 @@ fun main() {
 
     val chatManager = ChatManager()
 
-    chatManager.createMessage("Добрый день, есть вопрос","Artem",0)
-    chatManager.createChildMessage("Могу дать совет","Павел", 0,1)
-    chatManager.createChildMessage("Не смогу помочь","Елена", 0,2)
-    chatManager.createChildMessage("Здравс","Никита", 0,3)
-    chatManager.createMessage("Добрый день!","X",1)
-    chatManager.createMessage("Привет!","Andrey",2)
+    chatManager.createMessage("Добрый день, есть вопрос", "Artem", 0)
+    chatManager.createChildMessage("Могу дать совет", "Павел", 0, 1)
+    chatManager.createChildMessage("Не смогу помочь", "Елена", 0, 2)
+    chatManager.createChildMessage("Здравс", "Никита", 0, 3)
+    chatManager.createMessage("Добрый день!", "X", 1)
+    chatManager.createMessage("Привет!", "Andrey", 2)
 
     chatManager.printChat()
 }
