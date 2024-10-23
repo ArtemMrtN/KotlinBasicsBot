@@ -1,30 +1,16 @@
 package org.example.lesson_14
 
-class ChatManager {
-    private val chat = Chat()
-
-    fun createMessage(text: String, author: String, id: Int): Message {
-        return Message(text, author, id, chat)
-    }
-
-    fun createChildMessage(text: String, author: String, parentMessageId: Int, id: Int): ChildMessage {
-        return ChildMessage(text, author, parentMessageId, id, chat)
-    }
-
-    fun printChat() {
-        chat.printChat()
-    }
-}
-
 open class Chat {
     val messages: MutableList<Message> = mutableListOf()
     val childMessages: MutableList<ChildMessage> = mutableListOf()
 
-    fun addMessage(mess: Message) {
+    fun addMessage(text: String, author: String, id: Int) {
+        val mess = Message(text, author, id)
         messages.add(mess)
     }
 
-    fun addThreadMessage(child: ChildMessage) {
+    fun addThreadMessage(text: String, author: String, parentMessageId: Int, id: Int) {
+        val child = ChildMessage(text, author, parentMessageId, id)
         childMessages.add(child)
     }
 
@@ -51,36 +37,27 @@ open class Chat {
 class Message(
     val text: String,
     val author: String,
-    var id: Int = 0,
-    chat: Chat,
-) {
-    init {
-        chat.addMessage(this)
-    }
-}
+    var id: Int,
+)
 
 class ChildMessage(
     val text: String,
     val author: String,
     val parentMessageId: Int,
-    var id: Int = 0,
-    chat: Chat,
-) {
-    init {
-        chat.addThreadMessage(this)
-    }
-}
+    var id: Int,
+)
 
 fun main() {
 
-    val chatManager = ChatManager()
+    val chat = Chat()
 
-    chatManager.createMessage("Добрый день, есть вопрос", "Artem", 0)
-    chatManager.createChildMessage("Могу дать совет", "Павел", 0, 1)
-    chatManager.createChildMessage("Не смогу помочь", "Елена", 0, 2)
-    chatManager.createChildMessage("Здравс", "Никита", 0, 3)
-    chatManager.createMessage("Добрый день!", "X", 1)
-    chatManager.createMessage("Привет!", "Andrey", 2)
+    chat.addMessage("Добрый день, есть вопрос", "Artem", 0)
+    chat.addThreadMessage("Могу дать совет", "Павел", 0, 1)
+    chat.addThreadMessage("Не смогу помочь", "Елена", 0, 2)
+    chat.addThreadMessage("Здравс", "Никита", 0, 3)
+    chat.addMessage("Добрый день!", "X", 1)
+    chat.addMessage("Привет!", "Andrey", 2)
 
-    chatManager.printChat()
+    chat.printChat()
+
 }
