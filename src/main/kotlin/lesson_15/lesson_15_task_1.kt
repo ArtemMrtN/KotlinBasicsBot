@@ -19,7 +19,8 @@ class FloatingCreature(val name: String) : Float {}
 class FloatingAndFlyingCreature(val name: String) : Fly {
     override fun move() {
         println("Летаю и плаваю")
-    }}
+    }
+}
 
 fun main() {
 
