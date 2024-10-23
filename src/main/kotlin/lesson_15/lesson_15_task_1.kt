@@ -1,20 +1,14 @@
 package org.example.lesson_15
 
 interface Fly {
-    fun fly() {
+    fun move() {
         println("Летаю")
     }
 }
 
 interface Float {
-    fun float() {
+    fun move() {
         println("Плаваю")
-    }
-}
-
-interface FlyAndFloat {
-    fun floatAndFly() {
-        println("Плаваю и летаю")
     }
 }
 
@@ -22,7 +16,10 @@ class FlyingCreature(val name: String) : Fly {}
 
 class FloatingCreature(val name: String) : Float {}
 
-class FloatingAndFlyingCreature(val name: String) : FlyAndFloat {}
+class FloatingAndFlyingCreature(val name: String) : Fly {
+    override fun move() {
+        println("Летаю и плаваю")
+    }}
 
 fun main() {
 
@@ -30,8 +27,8 @@ fun main() {
     val gull = FlyingCreature("Чайка")
     val duck = FloatingAndFlyingCreature("Утка")
 
-    carp.float()
-    gull.fly()
-    duck.floatAndFly()
+    carp.move()
+    gull.move()
+    duck.move()
 
 }
