@@ -12,7 +12,7 @@ abstract class UserForum(
     }
 }
 
-class RegularUserForum(name: String) : UserForum(name) {}
+class RegularUserForum(name: String) : UserForum(name)
 
 class AdminUserForum(name: String) : UserForum(name) {
     fun deleteMessage() {
