@@ -18,6 +18,9 @@ class AdminUserForum(name: String) : UserForum(name) {
     fun deleteMessage() {
         println("Удалить сообщение")
     }
+    fun deleteUser() {
+        println("Удалить пользователя")
+    }
 }
 
 fun main() {
@@ -28,5 +31,6 @@ fun main() {
     regularUser.readForum()
     regularUser.writeMessage()
     adminUser.deleteMessage()
+    adminUser.deleteUser()
 
 }
