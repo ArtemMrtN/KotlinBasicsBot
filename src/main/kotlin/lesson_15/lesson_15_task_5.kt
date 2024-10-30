@@ -16,68 +16,49 @@ interface MovementCars {
 
 interface CargoMovement {
     fun download(amountCargo: Int, name: String) {
-        println("Загрузили $amountCargo тонн груза в $name")
+        if (amountCargo > 0) println("Загрузили $amountCargo тонн груза в $name")
     }
 
     fun unload(amountCargo: Int, name: String) {
-        println("Разгрузили $amountCargo тонн груза из $name")
+        if (amountCargo > 0) println("Разгрузили $amountCargo тонн груза из $name")
     }
 }
 
 interface PassengerMovement {
     fun seatPassenger(amountPassenger: Int, name: String) {
-        println("Зашли $amountPassenger пассажира в $name")
+        if (amountPassenger > 0) println("Зашли $amountPassenger пассажира в $name")
     }
 
     fun dropOffPassenger(amountPassenger: Int, name: String) {
-        println("Вышли $amountPassenger пассажира из $name")
+        if (amountPassenger > 0) println("Вышли $amountPassenger пассажира из $name")
     }
 }
 
 class Truck(
     val name: String,
-    val numberOfPassengers: Int,
-    val weightOfCargo: Int,
+    numberOfPassengers: Int,
+    weightOfCargo: Int,
 ) : MovementCars, CargoMovement, PassengerMovement {
-    fun seatPassengers(fromTruck: Int) {
-        if (fromTruck > 0) {
-            seatPassenger(fromTruck, name)
-        }
-    }
+    private val maxPassengers = 1
+    private val maxCargo = 2
+    var maxNumberOfPassengers = numberOfPassengers
+    var maxTransferCargo = weightOfCargo
 
-    fun dropOffPassengers(fromTruck: Int) {
-        if (fromTruck > 0) {
-            dropOffPassenger(fromTruck, name)
-        }
-    }
-
-    fun transferCargo(cargoToTransfer: Int) {
-        if (cargoToTransfer > 0) {
-            download(cargoToTransfer, name)
-        }
-    }
-
-    fun dropOffCargo(cargoToTransfer: Int) {
-        if (cargoToTransfer > 0) {
-            unload(cargoToTransfer, name)
-        }
+    init {
+        this.maxNumberOfPassengers = if (maxNumberOfPassengers > maxPassengers) maxPassengers else numberOfPassengers
+        this.maxTransferCargo = if (maxTransferCargo > maxCargo) maxCargo else weightOfCargo
     }
 }
 
 class PassengerCar(
     val name: String,
-    val numberOfPassengers: Int,
+    numberOfPassengers: Int,
 ) : MovementCars, PassengerMovement {
-    fun seatPassengers(fromCar: Int) {
-        if (fromCar > 0) {
-            seatPassenger(fromCar, name)
-        }
-    }
+    private val maxPassengers = 3
+    var maxNumberOfPassengers: Int = numberOfPassengers
 
-    fun dropOffPassengers(fromCar: Int) {
-        if (fromCar > 0) {
-            dropOffPassenger(fromCar, name)
-        }
+    init {
+        this.maxNumberOfPassengers = if (maxNumberOfPassengers > maxPassengers) maxPassengers else numberOfPassengers
     }
 }
 
@@ -86,29 +67,23 @@ fun main() {
     var passengersNeedTransferred = 6
     var cargoNeedTransferred = 2
 
-    val passengerCar = PassengerCar("Легковой автомобиль", 3)
-    val truck = Truck("Грузовик", 1, 2)
 
     do {
+        val passengerCar = PassengerCar("Легковой автомобиль", passengersNeedTransferred)
 
         passengerCar.come(passengerCar.name)
+
+        passengerCar.seatPassenger(passengerCar.maxNumberOfPassengers, passengerCar.name)
+        passengersNeedTransferred -= passengerCar.maxNumberOfPassengers
+
+        val truck = Truck("Грузовик", passengersNeedTransferred, cargoNeedTransferred)
         truck.come(truck.name)
 
-        val passengersToSeat =
-            minOf(passengersNeedTransferred, passengerCar.numberOfPassengers + truck.numberOfPassengers)
-        val fromCar = minOf(passengerCar.numberOfPassengers, passengersToSeat)
-        val fromTruck = passengersToSeat - fromCar
+        truck.seatPassenger(truck.maxNumberOfPassengers, truck.name)
+        passengersNeedTransferred -= truck.maxNumberOfPassengers
 
-        passengerCar.seatPassengers(fromCar)
-        passengersNeedTransferred -= fromCar
-
-        truck.seatPassengers(fromTruck)
-        passengersNeedTransferred -= fromTruck
-
-        val cargoToTransfer = minOf(cargoNeedTransferred, truck.weightOfCargo)
-
-        truck.transferCargo(cargoToTransfer)
-        cargoNeedTransferred -= cargoToTransfer
+        truck.download(truck.maxTransferCargo, truck.name)
+        cargoNeedTransferred -= truck.maxTransferCargo
 
         passengerCar.leave(passengerCar.name)
         truck.leave(truck.name)
@@ -116,9 +91,9 @@ fun main() {
         passengerCar.comeToEnd(passengerCar.name)
         truck.comeToEnd(truck.name)
 
-        passengerCar.dropOffPassengers(fromCar)
-        truck.dropOffPassengers(fromTruck)
-        truck.dropOffCargo(cargoToTransfer)
+        passengerCar.dropOffPassenger(passengerCar.maxNumberOfPassengers, passengerCar.name)
+        truck.dropOffPassenger(truck.maxNumberOfPassengers, truck.name)
+        truck.unload(truck.maxTransferCargo, truck.name)
 
         println()
 
