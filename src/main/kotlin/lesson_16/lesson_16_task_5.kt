@@ -10,6 +10,7 @@ class Player(
     val name: String,
     health: Int,
     var strength: Int,
+    var alive: Boolean = true,
 ) : PlayerActions {
     var health: Int = health
 
@@ -17,7 +18,7 @@ class Player(
         println("Игрок получил урон $amount")
         health -= amount
         if (health <= 0) {
-            die()
+            alive = false
         } else println("Здоровье: $health")
     }
 
@@ -35,6 +36,10 @@ class Player(
         println("Игрок умер")
     }
 
+    fun resetPlayer() {
+        die()
+    }
+
 }
 
 fun main() {
@@ -50,4 +55,7 @@ fun main() {
 
     } while (player.health > 0)
 
+    if (!player.alive) {
+        player.resetPlayer()
+    }
 }
