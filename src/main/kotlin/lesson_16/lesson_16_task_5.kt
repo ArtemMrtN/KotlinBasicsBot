@@ -10,16 +10,17 @@ class Player(
     val name: String,
     health: Int,
     var strength: Int,
-    var alive: Boolean = true,
 ) : PlayerActions {
     var health: Int = health
+    var alive: Boolean = true
 
     override fun takeDamage(amount: Int) {
-        if (health > 0) {
+        if (alive) {
             println("Игрок получил урон $amount")
             health -= amount
-        } else {
-            die()
+            if (health <= 0) {
+                die()
+            }
             println("Здоровье: $health")
         }
     }
