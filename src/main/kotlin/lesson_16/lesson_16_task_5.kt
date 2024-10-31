@@ -15,11 +15,13 @@ class Player(
     var health: Int = health
 
     override fun takeDamage(amount: Int) {
-        println("Игрок получил урон $amount")
-        health -= amount
-        if (health <= 0) {
-            alive = false
-        } else println("Здоровье: $health")
+        if (health > 0) {
+            println("Игрок получил урон $amount")
+            health -= amount
+        } else {
+            die()
+            println("Здоровье: $health")
+        }
     }
 
     override fun treat(amount: Int) {
@@ -27,17 +29,14 @@ class Player(
             println("Игрок восстановил здоровье на $amount")
             health += amount
             println("Здоровье: $health")
-        } else println("Не получится вылечить")
+        }
     }
 
     private fun die() {
         health = 0
         strength = 0
+        alive = false
         println("Игрок умер")
-    }
-
-    fun resetPlayer() {
-        die()
     }
 
 }
@@ -48,14 +47,9 @@ fun main() {
 
     do {
         val amountDamage = (1..99).random()
-        player.takeDamage(amountDamage)
-
         val amountTreat = (1..30).random()
+        player.takeDamage(amountDamage)
         player.treat(amountTreat)
+    } while (player.alive)
 
-    } while (player.health > 0)
-
-    if (!player.alive) {
-        player.resetPlayer()
-    }
 }
