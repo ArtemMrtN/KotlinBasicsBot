@@ -5,8 +5,11 @@ class Order(
     private var status: String,
 ) {
     fun sendRequestToTheManager(newStatus: String) {
-        status = newStatus
+        changeStatus(newStatus)
         println("Новый статус заказа: $status")
+    }
+    private fun changeStatus(newStatus: String) {
+        status = newStatus
     }
 }
 
