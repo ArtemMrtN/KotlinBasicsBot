@@ -6,11 +6,7 @@ class ShipInGame(
     homePort: String,
 ) {
     var name: String = name
-        set(value: String) {
-            field = name
-            println("Имя $value не принято!")
-            println("Имя корабля менять нельзя")
-        }
+        set(value: String) = println("Имя корабля менять нельзя")
 }
 
 fun main() {
@@ -18,5 +14,6 @@ fun main() {
     val ship = ShipInGame("Молния", 150, "Лондон")
 
     ship.name = "Ржавое корыто"
+    println(ship.name)
 
 }
