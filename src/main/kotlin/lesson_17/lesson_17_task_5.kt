@@ -12,11 +12,7 @@ class UserLoginAndPassword(
 
     var password: String = password
         get() = "*".repeat(field.length)
-        set(value) {
-            if (field != value) {
-                println("Вы не можете изменить пароль")
-            }
-        }
+        set(value) = println("Вы не можете изменить пароль")
 
 }
 
