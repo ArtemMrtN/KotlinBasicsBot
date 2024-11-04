@@ -3,32 +3,18 @@ package org.example.lesson_18
 abstract class AllDice(
     val numberOfFaces: Int
 ) {
-    abstract fun throwDice()
-}
-
-class DiceFour : AllDice(numberOfFaces = 4) {
-    private val range = 1..numberOfFaces
-    override fun throwDice() {
+    fun throwDice() {
+        val range = 1..numberOfFaces
         val valueDice = range.random()
         println(valueDice)
     }
 }
 
-class DiceSix : AllDice(numberOfFaces = 6) {
-    private val range = 1..numberOfFaces
-    override fun throwDice() {
-        val valueDice = range.random()
-        println(valueDice)
-    }
-}
+class DiceFour : AllDice(numberOfFaces = 4)
 
-class DiceEight : AllDice(numberOfFaces = 8) {
-    private val range = 1..numberOfFaces
-    override fun throwDice() {
-        val valueDice = range.random()
-        println(valueDice)
-    }
-}
+class DiceSix : AllDice(numberOfFaces = 6)
+
+class DiceEight : AllDice(numberOfFaces = 8)
 
 fun main() {
 
