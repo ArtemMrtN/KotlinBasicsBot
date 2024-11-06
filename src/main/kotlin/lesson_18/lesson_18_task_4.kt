@@ -1,24 +1,35 @@
 package org.example.lesson_18
 
-class Package {
+open class Package {
+    open fun createPackage() {}
+}
 
-    fun createPackage(length: Int, width: Int, height: Int) {
+class Rectangular (
+    private val length: Int,
+    private val width: Int,
+    private val height: Int,
+) : Package() {
+    override fun createPackage() {
         val area = length * width * height
         println(area)
     }
+}
 
-    fun createPackage(length: Int) {
+class Cube(
+    private val length: Int,
+) : Package() {
+    override fun createPackage() {
         val area = length * length * length
         println(area)
     }
-
 }
 
 fun main() {
 
-    val package1 = Package()
+    val rectangular: Package = Rectangular(2, 2, 4)
+    val cube: Package = Cube(4)
 
-    package1.createPackage(2, 2, 4)
-    package1.createPackage(4)
+    rectangular.createPackage()
+    cube.createPackage()
 
 }
