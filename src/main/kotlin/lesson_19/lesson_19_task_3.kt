@@ -7,7 +7,7 @@ class Spaceship {
     }
 
     fun landOn() {
-        TODO()
+//        TODO()
     }
 
     fun shootBackAtAnAsteroid() {}
