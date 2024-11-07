@@ -27,21 +27,15 @@ fun main() {
 }
 
 enum class Categories {
-    CLOTH {
-        override fun printCategory(): String {
-            return "Одежда"
-        }
-    },
-    STATIONERY {
-        override fun printCategory(): String {
-            return "Канцелярские товары"
-        }
-    },
-    OTHER {
-        override fun printCategory(): String {
-            return "Разное"
-        }
-    };
+    CLOTH,
+    STATIONERY,
+    OTHER;
 
-    abstract fun printCategory(): String
+    fun printCategory(): String {
+        return when (this) {
+            CLOTH -> "Одежда"
+            STATIONERY -> "Канцелярские товары"
+            OTHER -> "Разное"
+        }
+    }
 }
