@@ -9,7 +9,7 @@ fun main() {
 
     val cardIndex: MutableList<Person> = mutableListOf()
 
-    println("Чтобы добавить человека в картотеку, введите данные. Нужно ввести имя и пол. \nПол может быть \"MEN\" или \"WOMAN\"")
+    println("Чтобы добавить человека в картотеку, введите данные. Нужно ввести имя и пол. \nПол может быть \"MEN\" или \"WOMAN\" (В любом регистре)")
 
     do {
 
@@ -20,7 +20,7 @@ fun main() {
         while (gender == null) {
             println("Введите пол (\"MEN\" или \"WOMAN\"):")
             val genderInput = readLine()
-            gender = when (genderInput) {
+            gender = when (genderInput?.uppercase()) {
                 "MEN" -> Gender.MEN
                 "WOMAN" -> Gender.WOMAN
                 else -> {
