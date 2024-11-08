@@ -2,16 +2,16 @@ package org.example.lesson_19
 
 class Tank {
 
-    lateinit var cartridge: Cartridges
+    var cartridge: Cartridge? = null
 
-    fun loadCartridge(_cartridge: Cartridges) {
+    fun loadCartridge(_cartridge: Cartridge) {
         println("Зарядить $_cartridge")
         cartridge = _cartridge
     }
 
     fun shoot() {
-        if (this::cartridge.isInitialized) {
-            println("Нанесен урон ${cartridge.power}")
+        if (cartridge != null) {
+            println("Нанесен урон ${cartridge!!.power}")
         } else {
             println("Патрон не заряжен")
         }
@@ -23,16 +23,16 @@ fun main() {
     val tank = Tank()
 
     tank.shoot()
-    tank.loadCartridge(Cartridges.BLUE)
+    tank.loadCartridge(Cartridge.BLUE)
     tank.shoot()
-    tank.loadCartridge(Cartridges.GREEN)
+    tank.loadCartridge(Cartridge.GREEN)
     tank.shoot()
-    tank.loadCartridge(Cartridges.RED)
+    tank.loadCartridge(Cartridge.RED)
     tank.shoot()
 
 }
 
-enum class Cartridges(val power: Int) {
+enum class Cartridge(val power: Int) {
     BLUE(5),
     GREEN(10),
     RED(20),
