@@ -10,12 +10,16 @@ class Robot {
         "Выполняю свою работу"
     )
 
+    private var modifier: (String) -> String = { it }
+
     fun say() {
-        println(listOfPhrase.random())
+        val phrase = listOfPhrase.random()
+        val modifiedPhrase = modifier(phrase)
+        println(modifiedPhrase)
     }
 
     fun setModifier(function: (String) -> String) {
-        listOfPhrase.replaceAll { function(it) }
+        modifier = function
     }
 }
 
