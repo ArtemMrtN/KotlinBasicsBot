@@ -8,7 +8,6 @@ fun main() {
 
 }
 
-fun Array<Int>.evenNumbersSum() {
-    val evenList = this.filter { it % 2 == 0 }
-    println(evenList.sum())
+fun Array<Int>.evenNumbersSum(): List<Int> {
+    return this.filter { it % 2 == 0 }
 }
