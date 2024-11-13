@@ -15,12 +15,13 @@ class MainScreenViewModel {
         println(mainScreenState.data)
     }
 
+    data class MainScreenState(
+        val data: String? = null,
+        val isLoading: Boolean = false
+    )
+
 }
 
-data class MainScreenState(
-    val data: String? = null,
-    val isLoading: Boolean = false
-)
 
 
 fun main() {
